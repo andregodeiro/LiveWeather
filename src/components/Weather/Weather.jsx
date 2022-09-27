@@ -1,6 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { OpenWeatherApi } from "../../services/weatherapi";
-import { CityInput } from "./styles";
+import { Loading } from "../Loading/Loading";
+import {
+  Button,
+  ConditionField,
+  CityInput,
+  CityNameField,
+  CurrTempField,
+  HumidityField,
+  MaxTempField,
+  MinTempField,
+  Waiting,
+  WeatherDataContainer,
+  CountryFlagField,
+  TemperatureField,
+  WeatherInfo,
+} from "./styles";
 
 export const Weather = () => {
   const [city, setCity] = useState("");
@@ -40,30 +55,44 @@ export const Weather = () => {
               />
             </div>
             <div>
-              <button className="form-btn" type="submit">
-                Pesquisar
-              </button>
+              <Button type="submit">Pesquisar</Button>
             </div>
           </form>
         </div>
       </CityInput>
 
       {loading ? (
-        <div>Aguardando...</div>
+        <Waiting>
+          <Loading />
+        </Waiting>
       ) : (
-        <div className="weather-container">
-          <div className="city-name">
+        <WeatherDataContainer>
+          <CityNameField>
             {weather.name}, {weather.sys.country}
-          </div>
-          <div className="country-flag">country flag</div>
-          <div className="curr-temp"> {weather.main.temp.toFixed(0)} ºC</div>
-          <div className="max-temp">{weather.main.temp_max.toFixed(0)} ºC</div>
-          <div className="min-temp">{weather.main.temp_min.toFixed(0)} ºC</div>
-          <div className="humidity">{weather.main.humidity}</div>
-          <div className="conditions">
-            {weather.weather[0].description.toUpperCase()}
-          </div>
-        </div>
+          </CityNameField>
+
+          <CountryFlagField>country flag</CountryFlagField>
+
+          <WeatherInfo>
+            <TemperatureField>
+              <CurrTempField>{weather.main.temp.toFixed(0)} ºC</CurrTempField>
+
+              <MaxTempField>
+                Max: {weather.main.temp_max.toFixed(0)} ºC
+              </MaxTempField>
+
+              <MinTempField>
+                Min: {weather.main.temp_min.toFixed(0)} ºC
+              </MinTempField>
+            </TemperatureField>
+
+            <HumidityField>{weather.main.humidity}</HumidityField>
+
+            <ConditionField>
+              {weather.weather[0].description.toUpperCase()}
+            </ConditionField>
+          </WeatherInfo>
+        </WeatherDataContainer>
       )}
     </div>
   );
