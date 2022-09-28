@@ -48,6 +48,10 @@ export const WeatherDataContainer = styled.div`
 `;
 
 export const CityNameField = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   font-size: 25px;
   text-align: center;
 `;
@@ -84,10 +88,26 @@ export const MinTempField = styled.div`
   font-size: 25px;
 `;
 
+export const HumidityContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 3px;
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
+`;
+
 export const HumidityField = styled.div`
   grid-area: 1 / 2 / 2 / 3;
+  font-size: 27px;
 `;
 
 export const ConditionField = styled.div`
   grid-area: 2 / 2 / 3 / 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;

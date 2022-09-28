@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { OpenWeatherApi } from "../../services/weatherapi";
+import { CountryFlag } from "../CountryFlag/CountrtFlag";
+import Icons from "../Icons/Icons";
+import { WeatherIcon } from "../Icons/styles";
 import { Loading } from "../Loading/Loading";
 import {
   Button,
@@ -15,6 +18,7 @@ import {
   CountryFlagField,
   TemperatureField,
   WeatherInfo,
+  HumidityContainer,
 } from "./styles";
 
 export const Weather = () => {
@@ -69,9 +73,10 @@ export const Weather = () => {
         <WeatherDataContainer>
           <CityNameField>
             {weather.name}, {weather.sys.country}
+            <CountryFlagField>
+              <CountryFlag country={weather.sys.country} />
+            </CountryFlagField>
           </CityNameField>
-
-          <CountryFlagField>country flag</CountryFlagField>
 
           <WeatherInfo>
             <TemperatureField>
@@ -86,9 +91,20 @@ export const Weather = () => {
               </MinTempField>
             </TemperatureField>
 
-            <HumidityField>{weather.main.humidity}</HumidityField>
+            <HumidityContainer>
+              <WeatherIcon
+                className="humidity-icon"
+                src={"https://cdn-icons-png.flaticon.com/512/728/728093.png"}
+                alt={"humidity logo"}
+              />
+              <HumidityField>{weather.main.humidity}%</HumidityField>
+            </HumidityContainer>
 
             <ConditionField>
+              <Icons
+                icon={weather.weather[0].icon}
+                condition={weather.weather[0].description}
+              />
               {weather.weather[0].description.toUpperCase()}
             </ConditionField>
           </WeatherInfo>
