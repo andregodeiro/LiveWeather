@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const LoadingAnimation = styled.div`
   .loader {
     border: 7px solid #f3f3f3; /* Light grey */
-    border-top: 7px solid #0098da; /* Blue */
+    border-top: 7px solid #413c9d; /* Blue */
     border-radius: 50%;
     width: 20px;
     height: 20px;

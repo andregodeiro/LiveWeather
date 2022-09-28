@@ -1,15 +1,25 @@
 import styled from "styled-components";
 
+export const WeatherApp = styled.div`
+  margin-top: 300px;
+`;
+
 export const CityInput = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;
-  border: solid red;
+  margin-top: 250px;
+  background-color: rgba(49, 35, 62, 1);
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 10px 10px 0 0;
 
   .city-form {
     display: flex;
     align-items: center;
     gap: 5px;
+    margin: 0 auto;
+    padding: 10px;
   }
 
   .city-input {
@@ -28,17 +38,26 @@ export const Button = styled.button`
 `;
 
 export const Waiting = styled.div`
-  border: solid green;
   display: flex;
   justify-content: center;
   padding: 10px;
+  max-width: 700px;
+  background-color: rgba(49, 35, 62, 1);
+  margin: 0 auto;
+  border-radius: 0 0 10px 10px;
+  color: white;
 `;
 
 export const WeatherDataContainer = styled.div`
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
   padding: 10px;
-  margin: 200px auto;
-  background-color: #31233e;
+  margin: 0 auto;
+  background: rgb(49, 35, 62);
+  background: linear-gradient(
+    180deg,
+    rgba(49, 35, 62, 1) 5%,
+    rgba(2, 0, 36, 1) 91%
+  );
   color: white;
   max-width: 700px;
   padding: 10px;
@@ -67,6 +86,7 @@ export const WeatherInfo = styled.div`
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  margin-left: 25px;
 `;
 
 export const TemperatureField = styled.div`
@@ -91,6 +111,7 @@ export const MinTempField = styled.div`
 export const HumidityContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 15px;
   margin-left: 3px;
 

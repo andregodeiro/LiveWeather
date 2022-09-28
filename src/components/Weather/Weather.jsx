@@ -19,6 +19,7 @@ import {
   TemperatureField,
   WeatherInfo,
   HumidityContainer,
+  WeatherApp,
 } from "./styles";
 
 export const Weather = () => {
@@ -46,70 +47,72 @@ export const Weather = () => {
 
   return (
     <div className="weather-page">
-      <CityInput>
-        <div className="city-name-box">
-          <form onSubmit={handleSubmit} className="city-form">
-            <div>
-              <input
-                type="text"
-                placeholder="Insira a sua cidade"
-                className="city-input"
-                value={city}
-                onChange={(event) => setCity(event.target.value)}
-              />
-            </div>
-            <div>
-              <Button type="submit">Pesquisar</Button>
-            </div>
-          </form>
-        </div>
-      </CityInput>
+      <WeatherApp>
+        <CityInput>
+          <div className="city-name-box">
+            <form onSubmit={handleSubmit} className="city-form">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Insira a sua cidade"
+                  className="city-input"
+                  value={city}
+                  onChange={(event) => setCity(event.target.value)}
+                />
+              </div>
+              <div>
+                <Button type="submit">Pesquisar</Button>
+              </div>
+            </form>
+          </div>
+        </CityInput>
 
-      {loading ? (
-        <Waiting>
-          <Loading />
-        </Waiting>
-      ) : (
-        <WeatherDataContainer>
-          <CityNameField>
-            {weather.name}, {weather.sys.country}
-            <CountryFlagField>
-              <CountryFlag country={weather.sys.country} />
-            </CountryFlagField>
-          </CityNameField>
+        {loading ? (
+          <Waiting>
+            <Loading />
+          </Waiting>
+        ) : (
+          <WeatherDataContainer>
+            <CityNameField>
+              {weather.name}, {weather.sys.country}
+              <CountryFlagField>
+                <CountryFlag country={weather.sys.country} />
+              </CountryFlagField>
+            </CityNameField>
 
-          <WeatherInfo>
-            <TemperatureField>
-              <CurrTempField>{weather.main.temp.toFixed(0)} ºC</CurrTempField>
+            <WeatherInfo>
+              <TemperatureField>
+                <CurrTempField>{weather.main.temp.toFixed(0)} ºC</CurrTempField>
 
-              <MaxTempField>
-                Max: {weather.main.temp_max.toFixed(0)} ºC
-              </MaxTempField>
+                <MaxTempField>
+                  Max: {weather.main.temp_max.toFixed(0)} ºC
+                </MaxTempField>
 
-              <MinTempField>
-                Min: {weather.main.temp_min.toFixed(0)} ºC
-              </MinTempField>
-            </TemperatureField>
+                <MinTempField>
+                  Min: {weather.main.temp_min.toFixed(0)} ºC
+                </MinTempField>
+              </TemperatureField>
 
-            <HumidityContainer>
-              <WeatherIcon
-                className="humidity-icon"
-                src={"https://cdn-icons-png.flaticon.com/512/728/728093.png"}
-                alt={"humidity logo"}
-              />
-              <HumidityField>{weather.main.humidity}%</HumidityField>
-            </HumidityContainer>
+              <HumidityContainer>
+                <WeatherIcon
+                  className="humidity-icon"
+                  src={"https://cdn-icons-png.flaticon.com/512/728/728093.png"}
+                  alt={"humidity logo"}
+                />
+                <HumidityField>{weather.main.humidity}%</HumidityField>
+              </HumidityContainer>
 
-            <ConditionField>
-              <Icons
-                icon={weather.weather[0].icon}
-                condition={weather.weather[0].description}
-              />
-              {weather.weather[0].description.toUpperCase()}
-            </ConditionField>
-          </WeatherInfo>
-        </WeatherDataContainer>
-      )}
+              <ConditionField>
+                <Icons
+                  icon={weather.weather[0].icon}
+                  condition={weather.weather[0].description}
+                />
+                {weather.weather[0].description.toUpperCase()}
+              </ConditionField>
+            </WeatherInfo>
+          </WeatherDataContainer>
+        )}
+      </WeatherApp>
     </div>
   );
 };
