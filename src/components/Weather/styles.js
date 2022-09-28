@@ -61,9 +61,6 @@ export const WeatherDataContainer = styled.div`
   color: white;
   max-width: 700px;
   padding: 10px;
-  /* -webkit-box-shadow: 0px 0px 35px 1px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 35px 1px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 35px 1px rgba(0, 0, 0, 0.75); */
 `;
 
 export const CityNameField = styled.div`
