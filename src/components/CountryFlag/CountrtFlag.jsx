@@ -3,7 +3,7 @@ import { CountryFlagField, Flag } from "./styles";
 import PropTypes from "prop-types";
 
 export const CountryFlag = ({ country }) => {
-  const flagApi = `https://countryflagsapi.com/png/${country}`;
+  const flagApi = `https://www.countryflagicons.com/FLAT/64/${country}.png`;
 
   return (
     <div>
